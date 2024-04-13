@@ -1,0 +1,87 @@
+{% include "headers.html"%}
+{%block content%}
+<div class="body-container-wrapper">
+  <div class="body-container">
+    <div class="page-center">
+      
+      <div class="container"> 
+        <div class="row"> 
+          <div class="col-md my-5 text-center">
+      
+      <i class="fa fa-cloud" aria-hidden="true"></i>
+      <h1>Upload Your <strong>Files</strong> Here</h1>
+      <br>
+      <br>
+
+
+      <form  action="{{url_for('uploads')}}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+         <label class="form-label" for="formFile">File:- .pptx, .docx, .xlsx</label>
+          <input class="form-control form-control-lg mx-auto" type="file" id="formFile" name="file" accept=".xlsx, .docx, .docx" required style="width: 200px;">
+          <br>
+          <button type="submit" class="upload">Upload</button>
+        </div>
+        </form>
+
+      <!-- <a class="upload" id="call-to-action"><span>Select Your Upload</span></a>
+
+      <form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
+        <div id="drop">
+      <input type="file" name="upl" multiple  multiple class="upload-hidden">
+          </div>
+        </form> -->
+      </div>
+
+       
+        <!-- To-do list content -->
+        {%if filename: %}
+        
+          <div class="col-md my-5 " style="overflow-y: auto; max-height: 300px;"> 
+            
+            <table class="table text-white mb-0">
+        
+                    <table class="table text-white mb-0">
+                      <thead>
+                        <tr>
+                          <th scope="col">Type</th>
+                          <th>S No.</th>
+                          <th scope="col">File Name</th>
+                          
+                        </tr>
+                      </thead>
+                      
+        {%endif%}              
+                      {% for i in range(filename|length) %}
+                      <tbody>
+                        
+                        <tr class="fw-normal">
+                          <th>
+                            <img src="{{ url_for('static', filename='images/file.png') }}"
+                              alt="avatar 1" style="width: 45px; height: auto;">
+                          </th>
+                          <th class="align-middle">
+                            
+                            <span class="ms-2">{{ i+1 }}</span>
+                          </th>
+                          
+                          <td class="align-middle">
+                            <span class="fs-4">{{ filename[i]["filename"] }}</span>
+                          </td>
+                          
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+            </table>
+          </div>
+          
+  </div>
+  </div>
+    </div>
+
+    </div>
+  </div>
+<br>
+
+{%include "footer.html"%}
+{%endblock%}

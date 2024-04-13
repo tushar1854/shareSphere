@@ -1,0 +1,89 @@
+{% include "headers.html"%}
+{%block content%}
+<div class="body-container-wrapper">
+  <div class="body-container">
+    <div class="page-center">
+      
+      <div class="container"> 
+        <div class="row"> 
+          
+
+       
+        <!-- To-do list content -->
+          <div class="col-md my-5 " style="overflow-y: auto; max-height: 300px;"> 
+            
+            <table class="table text-white mb-0">
+        
+                    <table class="table text-white mb-0">
+                      <thead>
+                        <tr>
+                          <th scope="col">Type</th>
+                          <th>S No.</th>
+                          <th scope="col">File Name</th>
+                          <th scope="col">Posted By</th>
+                          <th scope="col">Downloads</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for i in range(filename|length) %}
+                        <tr class="fw-normal">
+                          <th>
+                            <img src="{{ url_for('static', filename='images/file.png') }}"
+                              alt="avatar 1" style="width: 45px; height: auto;">
+                          </th>
+                          <th class="align-middle">
+                            <span class="ms-2">{{ i+1 }}</span>
+                          </th>
+                          
+                          <td class="align-middle">
+                            <span class="fs-4">{{ filename[i]["filename"] }}</span>
+                          </td>
+                          <td class="align-middle">
+                            <span class="fs-4">{{ filename[i]["firstname"] }} {{ filename[i]["lastname"] }}</span>
+                          </td>
+                          <td class="align-middle">
+                            <span class="fs-4">{{ filename[i]["count"] }}</span>
+                          </td>
+                          <form action="{{url_for('generate_link')}}" method="post">
+                            <input type="hidden" id="hiddenField" name="filename" value="{{ filename[i]['filename'] }}">
+                            <td><button class="fs-5 fw-bolder btn btn-primary" type="submit">Download</button></td>    
+                            </form>
+                          
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+            </table>
+          </div>
+          {% if download_link: %}
+          <div class="col-md my-5 text-center">
+      
+            <i class="fa fa-download" aria-hidden="true"></i>
+            <br>
+            <br>
+            <br>
+            <h1> Click Here To <strong>Download</strong></h1>
+
+            <form  action="{{url_for('uploads')}}" method="post" enctype="multipart/form-data">
+              <div class="mb-3">
+               
+                <br>
+                <button type="submit" class="upload">Download</button>
+              </div>
+              </form>
+      
+            
+            </div>
+            {%endif%}
+          
+  </div>
+  </div>
+    </div>
+
+    </div>
+  </div>
+<br>
+
+{%include "footer.html"%}
+{%endblock%}

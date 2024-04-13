@@ -1,0 +1,43 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block styles %}
+  {{ super() }}
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="icon" href="{{url_for('static',filename='images/file.png')}}">
+{% endblock %}
+
+{% block title %}Secure-Filesharing{% endblock %}
+
+{% block content %}
+<div class="header-container-wrapper">
+  <div class="header-container">
+    <div class="custom-header-bg">
+      <div class="page-center">
+        <div class="logo"><a style="all:unset" href="{{url_for('home')}}">Share Sphere</a></div>
+        <div class="navigation">
+          <ul>
+            {% if not current_type: %}
+            <li><a href="{{url_for('login')}}" class="button click-upload"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
+            <li><a href="{{url_for('register')}}" class="button open-progress"><i class=" fas fa-sign-in-alt" aria-hidden="true"></i>Sign Up</a></li>
+            {%else%}
+            <li><a href="{{url_for('generate_link')}}" class="button fw-bold">{{current_type}}</a></li>
+            <li><a href="{{url_for('logout')}}" class="button click-upload"><i class=" fas fa-sign-in-alt" aria-hidden="true"></i>Logout</a></li>
+
+            
+            {%endif%}
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

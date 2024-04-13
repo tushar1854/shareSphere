@@ -1,0 +1,34 @@
+{%include "headers.html" %}
+{%block content%}
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="body-contain pt-5">
+
+<div class="mx-auto text-center mt-5">
+  <i class="fa fa-download" aria-hidden="true"></i>
+            <br>
+            <br>
+            <br>
+  <h1 class="display-1"> Click Here To <strong>Download</strong></h1>
+<form action="{{url_for('download_file')}}" method="post">
+  <input type="hidden" name="generated_link" value="{{download_link}}">
+  <input type="hidden" name="filename" value="{{filename}}">
+  <br>
+  <br>
+  <button class="btn btn-primary btn-lg p-4 " type="submit">Download</button>
+</form>
+</div>
+</div>
+  {% endblock %}
+{%include "footer.html"%}
+
+          
+          
+
+
+
+
+

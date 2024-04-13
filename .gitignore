@@ -1,0 +1,7 @@
+/env
+uenv
+sample
+/backend/__pycache__
+/frontend/__pycache__
+.vscode
+

@@ -1,0 +1,84 @@
+{%include "headers.html"%}
+{%block content%}
+<style>
+    .container {
+      font-size: 12px;
+    }
+  
+    .card {
+      border-radius: 15px;
+    }
+  
+    .form-control {
+      font-size: 2rem;
+    }
+  </style>
+  <br>
+  <br>
+  <br>
+  
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5 mb-5 text-center">
+        <div class="card">
+          <div class="card-body py-5 px-md-5">
+            <form action="{{url_for('register')}}" method="post">
+              
+  
+              <div class="row mb-4">
+                <div class="col-md-12 mb-4">
+                  <input type="text" id="firstName" name="first_name" class="form-control" placeholder="First name" />
+                </div>
+                <div class="col-md-12">
+                  <input type="text" id="lastName" name="last_name" class="form-control" placeholder="Last name" />
+                </div>
+              </div>
+              <div class="mb-4">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" />
+              </div>
+  
+              <div class="mb-4">
+                <input type="password" id="password" name="pass" class="form-control" placeholder="Password" />
+              </div>
+
+
+              <div class="mb-4">
+                <p class="fw-bold">User Type:</p>
+                            <select class="form-select form-select-lg fw-bolder" name="user_type" aria-label="Default select example">
+                                
+                                <option selected>Client</option>
+                                <option>Operation</option>
+                              </select>
+              </div>
+  
+              <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" id="subscribe" checked />
+                <label class="form-check-label fw-normal" for="subscribe">
+                  Subscribe to our newsletter
+                </label>
+              </div>
+  
+              <button type="submit" class="btn btn-lg btn-primary btn-block mb-4 fs-3">Sign up</button>
+  
+              <div class="text-center">
+                <a href="{{url_for('login')}}">I'm already a member</a>
+                <!-- <p>or sign up with:</p> -->
+                <!-- <button type="button" class="btn btn-link btn-floating mx-1"><i class="fab fa-facebook-f"></i></button>
+                <button type="button" class="btn btn-link btn-floating mx-1"><i class="fab fa-google"></i></button>
+                <button type="button" class="btn btn-link btn-floating mx-1"><i class="fab fa-twitter"></i></button>
+                <button type="button" class="btn btn-link btn-floating mx-1"><i class="fab fa-github"></i></button> -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  {%endblock%}
+
+    {%include "footer.html"%}
+
+  
